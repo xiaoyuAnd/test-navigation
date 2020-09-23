@@ -4,8 +4,8 @@ const x = localStorage.getItem('hashMap')
 const xObject = JSON.parse(x)
 console.log(xObject);
 const hashMap = xObject || [
-    { logo: 'C', url: 'https://caniuse.com' },
-    { logo: 'B', url: 'https://bilibili.com' }
+    { logo: 'C', url: 'https://cssgradient.io/' },
+    { logo: 'B', url: 'https://caniuse.com/p' }
 ]
 const simplifyUrl = (url) => {
     return url.replace('https://', '')
@@ -62,3 +62,14 @@ window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap)
     localStorage.setItem('hashMap', string)
 }
+$(document).on('keypress', (e) => {
+    // const key = e.key
+    const { key } = e
+    console.log(key);
+    console.log(hashMap);
+    for (let i = 0; i < hashMap.length; i++) {
+        if (hashMap[i].logo[0].toLowerCase() === key) {
+            window.open(hashMap[i].url)
+        }
+    }
+})
